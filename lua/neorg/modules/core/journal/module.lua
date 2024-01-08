@@ -23,7 +23,7 @@ local neorg = require("neorg.core")
 local config, lib, log, modules = neorg.config, neorg.lib, neorg.log, neorg.modules
 
 local module = modules.create("core.journal")
-
+local templater = modules.get_module("external.templates")
 module.examples = {
     ["Changing TOC format to divide year in quarters"] = function()
         -- In your ["core.journal"] options, change toc_format to a function like this:
@@ -140,9 +140,10 @@ module.private = {
         if
             not journal_file_exists
             and module.config.public.use_template
-            and module.required["core.dirman"].file_exists(workspace_path .. "/" .. folder_name .. "/" .. template_name)
+            and module.required["core.dirman"].file_exists(vim.fn.stdpath("config") .. "/templates/norg" .. template_name)
         then
-            vim.cmd("0read " .. workspace_path .. "/" .. folder_name .. "/" .. template_name .. "| w")
+            --- vim.cmd("0read " .. workspace_path .. "/" .. folder_name .. "/" .. template_name .. "| w")
+            templater.private.subcommands.add("journal")
         end
     end,
 
