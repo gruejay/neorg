@@ -1,3 +1,5 @@
+Notice: forked from [neorg](https://github.com/nvim-neorg/neorg). Modifications have been made to some aspects of the code, including adding additional dependencies that are not documented. This fork should not be considered stable. If you're interested in Neorg, I encourage you to go grab a copy of the original source code from the author. Of course, my fork is GPLv3.
+
 <div align="center">
 
 <img src="res/neorg.svg" width=300>
